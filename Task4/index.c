@@ -23,7 +23,10 @@ int main() {
         int matrix[m][n];
         
         inputMatrix(m, n, matrix);
+        printf("Матриця до: \n");
+        printMatrix(m, n, matrix);
         mirror(m, n, matrix);
+        printf("Матриця після: \n");
         printMatrix(m, n, matrix);
     }
 

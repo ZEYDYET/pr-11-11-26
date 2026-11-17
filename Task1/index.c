@@ -5,7 +5,7 @@
 void scanfVar(int*, int*, int*);
 bool checkInterval(int, int);
 void scanfTraff(int M, int N, int traffic[M][N]);
-void findMaxTraff(int K, int M, int N, int traffic[M][N], int* maxTraffic);
+void findMaxTraff(int K, int N, int traffic[N], int* maxTraffic);
 
 int main() {
     SetConsoleOutputCP(65001);
@@ -25,8 +25,13 @@ int main() {
         int traffic[m][n];
         scanfTraff(m, n, traffic);
 
-        int maxTraffic = traffic[k - 1][0];
-        findMaxTraff(k, m, n, traffic, &maxTraffic);
+        int kArray[n];
+        for (int i = 0; i < n; i++) {
+            kArray[i] = traffic[k - 1][i];
+        }
+
+        int maxTraffic = kArray[0];
+        findMaxTraff(k, n, kArray, &maxTraffic);
     } else {
         printf("Некоректний інтервал K\n");
     }
@@ -57,12 +62,11 @@ void scanfTraff(int M, int N, int traffic[M][N]) {
     }
 }
 
-void findMaxTraff(int K, int M, int N, int traffic[M][N], int* maxTraffic) {
-    *maxTraffic = traffic[K - 1][0];
+void findMaxTraff(int K, int N, int traffic[N], int* maxTraffic) {
     for (int j = 0; j < N; j++) {
-        printf("Показник %d: %d\n", j + 1, traffic[K - 1][j]);
-        if (traffic[K - 1][j] > *maxTraffic) {
-            *maxTraffic = traffic[K - 1][j];
+        printf("Показник %d: %d\n", j + 1, traffic[j]);
+        if (traffic[j] > *maxTraffic) {
+            *maxTraffic = traffic[j];
         }
     }
 

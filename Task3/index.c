@@ -5,14 +5,16 @@ int matrixSize();
 void fillMatr(int N, int matrix[N][N]);
 void printMatr(int N, int matrix[N][N]);
 
+#define Max_N 100
+
 int main() {
     SetConsoleOutputCP(65001);
 
     // 3. Заповнити матрицю
 
     int n = matrixSize();
-    if (n > 0) {
-        int matrix[n][n];
+    if (n > 0 && n < 10) {
+        int matrix[Max_N][Max_N];
         fillMatr(n, matrix);
         printMatr(n, matrix);
     } else {
